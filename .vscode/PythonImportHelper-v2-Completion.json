@@ -1,0 +1,188 @@
+[
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "commands",
+        "importPath": "discord.ext",
+        "description": "discord.ext",
+        "isExtraImport": true,
+        "detail": "discord.ext",
+        "documentation": {}
+    },
+    {
+        "label": "tasks",
+        "importPath": "discord.ext",
+        "description": "discord.ext",
+        "isExtraImport": true,
+        "detail": "discord.ext",
+        "documentation": {}
+    },
+    {
+        "label": "commands",
+        "importPath": "discord.ext",
+        "description": "discord.ext",
+        "isExtraImport": true,
+        "detail": "discord.ext",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "loguru",
+        "description": "loguru",
+        "isExtraImport": true,
+        "detail": "loguru",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "importPath": "loguru",
+        "description": "loguru",
+        "isExtraImport": true,
+        "detail": "loguru",
+        "documentation": {}
+    },
+    {
+        "label": "Context",
+        "importPath": "discord.ext.commands.context",
+        "description": "discord.ext.commands.context",
+        "isExtraImport": true,
+        "detail": "discord.ext.commands.context",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "discord.ext.commands.bot",
+        "description": "discord.ext.commands.bot",
+        "isExtraImport": true,
+        "detail": "discord.ext.commands.bot",
+        "documentation": {}
+    },
+    {
+        "label": "discord",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "discord",
+        "description": "discord",
+        "detail": "discord",
+        "documentation": {}
+    },
+    {
+        "label": "Embed",
+        "importPath": "discord",
+        "description": "discord",
+        "isExtraImport": true,
+        "detail": "discord",
+        "documentation": {}
+    },
+    {
+        "label": "cycle",
+        "importPath": "itertools",
+        "description": "itertools",
+        "isExtraImport": true,
+        "detail": "itertools",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "change_bot_status",
+        "importPath": "tasks.status",
+        "description": "tasks.status",
+        "isExtraImport": true,
+        "detail": "tasks.status",
+        "documentation": {}
+    },
+    {
+        "label": "TMate",
+        "kind": 6,
+        "importPath": "cogs.tmate",
+        "description": "cogs.tmate",
+        "peekOfCode": "class TMate(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    @property\n    def uri(self):\n        result = \"\"\n        with open(\"./uri\", \"r\", encoding=\"utf-8\") as _file:\n            result = _file.read()\n        return result\n    def get_authorized_users(self):",
+        "detail": "cogs.tmate",
+        "documentation": {}
+    },
+    {
+        "label": "BOT_STATUSES",
+        "kind": 5,
+        "importPath": "tasks.status",
+        "description": "tasks.status",
+        "peekOfCode": "BOT_STATUSES = cycle(\n    [\n        \"'I'll fix her calm down' - Bob the Builder\",\n        \"A hammer can fix every problem.  Every.  Problem.\",\n        \"My IQ test results came back. They were negative.\",\n        \"Before you marry a person, make them use a computer with a slow Internet connection to see who they really are.\",\n        \"A Freudian slip is when you say one thing but mean your mother.\",\n        \"I remixed the remix... it was back to normal.\",\n        \"Alcoholism is a disease. But it's like the only disease you can get yelled at for having.\",\n        \"Dogs are forever in the pushup position.\",",
+        "detail": "tasks.status",
+        "documentation": {}
+    },
+    {
+        "label": "get_guild_count",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")\n        # INCREMENTS THE GUILD COUNTER.\n        guild_count = guild_count + 1\n    logger.info(f\"{guild_count} total guilds\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "BOT_NAME",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "BOT_NAME = \"Blitzcrank\"\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "intents",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "intents.message_content",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")\n        # INCREMENTS THE GUILD COUNTER.",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "bot",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")\n        # INCREMENTS THE GUILD COUNTER.\n        guild_count = guild_count + 1",
+        "detail": "main",
+        "documentation": {}
+    }
+]
