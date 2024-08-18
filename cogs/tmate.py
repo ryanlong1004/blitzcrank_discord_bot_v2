@@ -1,3 +1,4 @@
+import os
 from typing import Any
 from discord.ext import commands
 from loguru import logger
@@ -33,10 +34,13 @@ class TMate(commands.Cog):
         logger.info(f"{self.uri}")
         msg = Embed(
             title="Lab Link URL",
-            description=f"https://{self.uri}",
+            description=f"Click the link to jump to the lab",
         )
+        msg.add_field(name="TMate URI", value=f"https://{self.uri}")
+        msg.set_thumbnail(url=os.environ["TMATE_THUMB_URL"])
+        logger.debug(f"{msg.to_dict()}")
         logger.info("sending message")
-        await ctx.message.author.send("hello world", embed=msg)
+        await ctx.message.author.send(embed=msg)
 
     @commands.command()
     async def set_uri(self, ctx: Context):

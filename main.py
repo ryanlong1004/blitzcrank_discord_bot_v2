@@ -39,12 +39,7 @@ def get_guild_count():
 
 @bot.event
 async def on_ready():
-
-    # load tasks
     change_bot_status.start(bot)
-
-    # meh ....
-
     try:
         synced_commands = await bot.tree.sync()
         logger.info(f"Synced {len(synced_commands)}")
@@ -59,7 +54,6 @@ async def load():
 
 
 async def main():
-    print(os.environ["DISCORD_TOKEN"])
     async with bot:
         await load()
         await bot.start(os.environ["DISCORD_TOKEN"])
