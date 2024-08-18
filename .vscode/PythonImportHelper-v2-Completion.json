@@ -141,6 +141,33 @@
         "documentation": {}
     },
     {
+        "label": "decorator",
+        "kind": 2,
+        "importPath": "decorator_example",
+        "description": "decorator_example",
+        "peekOfCode": "def decorator(func):\n    def wrapper():\n        print(\"Something is happening before the function is called.\")\n        func()\n        print(\"Something is happening after the function is called.\")\n    return wrapper\ndef say_whee():\n    print(\"Whee!\")\n# @decorator\ndef easy_say_whee():",
+        "detail": "decorator_example",
+        "documentation": {}
+    },
+    {
+        "label": "say_whee",
+        "kind": 2,
+        "importPath": "decorator_example",
+        "description": "decorator_example",
+        "peekOfCode": "def say_whee():\n    print(\"Whee!\")\n# @decorator\ndef easy_say_whee():\n    print(\"easy whee\")\neasy_say_whee()",
+        "detail": "decorator_example",
+        "documentation": {}
+    },
+    {
+        "label": "easy_say_whee",
+        "kind": 2,
+        "importPath": "decorator_example",
+        "description": "decorator_example",
+        "peekOfCode": "def easy_say_whee():\n    print(\"easy whee\")\neasy_say_whee()",
+        "detail": "decorator_example",
+        "documentation": {}
+    },
+    {
         "label": "get_guild_count",
         "kind": 2,
         "importPath": "main",
