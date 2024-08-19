@@ -21,6 +21,7 @@ class RequestModal(discord.ui.Modal):
             required=True,
             max_length=500,
             placeholder="I'd like to learn more about ...",
+            
         )
         self.add_item(self.request)
 
@@ -49,5 +50,5 @@ class RequestModal(discord.ui.Modal):
             logger.error("Channel 'moderator-only' not found or is of an invalid type.")
             return
 
-        # Send the user's request to the moderator-only channe
+        # Send the user's request to the moderator-only channel
         await channel.send(f"User Request: \n\n{self.request.value}")
