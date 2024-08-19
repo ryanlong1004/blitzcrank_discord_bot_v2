@@ -90,14 +90,6 @@
         "documentation": {}
     },
     {
-        "label": "app_commands",
-        "importPath": "discord",
-        "description": "discord",
-        "isExtraImport": true,
-        "detail": "discord",
-        "documentation": {}
-    },
-    {
         "label": "cycle",
         "importPath": "itertools",
         "description": "itertools",
@@ -137,33 +129,6 @@
         "description": "cogs.tmate",
         "peekOfCode": "class TMate(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    @property\n    def uri(self):\n        result = \"\"\n        with open(\"./uri\", \"r\", encoding=\"utf-8\") as _file:\n            result = _file.read()\n        return result\n    def get_authorized_users(self):",
         "detail": "cogs.tmate",
-        "documentation": {}
-    },
-    {
-        "label": "intents",
-        "kind": 5,
-        "importPath": "slash_commands.test",
-        "description": "slash_commands.test",
-        "peekOfCode": "intents = discord.Intents.all()\nclient = discord.Client(intents=intents)\ntree = app_commands.CommandTree(client)\n@client.event\nasync def on_ready():\n    await tree.sync(guild=discord.Object(id=611027490848374811))\n    # print \"ready\" in the console when the bot is ready to work\n    print(\"ready\")\n# Add the guild ids in which the slash command will appear.\n# If it should be in all, remove the argument, but note that",
-        "detail": "slash_commands.test",
-        "documentation": {}
-    },
-    {
-        "label": "client",
-        "kind": 5,
-        "importPath": "slash_commands.test",
-        "description": "slash_commands.test",
-        "peekOfCode": "client = discord.Client(intents=intents)\ntree = app_commands.CommandTree(client)\n@client.event\nasync def on_ready():\n    await tree.sync(guild=discord.Object(id=611027490848374811))\n    # print \"ready\" in the console when the bot is ready to work\n    print(\"ready\")\n# Add the guild ids in which the slash command will appear.\n# If it should be in all, remove the argument, but note that\n# it will take some time (up to an hour) to register the",
-        "detail": "slash_commands.test",
-        "documentation": {}
-    },
-    {
-        "label": "tree",
-        "kind": 5,
-        "importPath": "slash_commands.test",
-        "description": "slash_commands.test",
-        "peekOfCode": "tree = app_commands.CommandTree(client)\n@client.event\nasync def on_ready():\n    await tree.sync(guild=discord.Object(id=611027490848374811))\n    # print \"ready\" in the console when the bot is ready to work\n    print(\"ready\")\n# Add the guild ids in which the slash command will appear.\n# If it should be in all, remove the argument, but note that\n# it will take some time (up to an hour) to register the\n# command if it's for all guilds.",
-        "detail": "slash_commands.test",
         "documentation": {}
     },
     {
@@ -207,7 +172,7 @@
         "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "class RequestModal(discord.ui.Modal, title=\"Make a request\"):\n    request = discord.ui.TextInput(\n        style=discord.TextStyle.long,\n        label=\"Message\",\n        required=True,\n        max_length=500,\n        placeholder=\"I'd like to learn more about ...\",\n    )\n    async def on_submit(self, interaction: discord.Interaction):\n        await interaction.response.send_message(",
+        "peekOfCode": "class RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field\n        self.request = discord.ui.TextInput(\n            style=discord.TextStyle.long,",
         "detail": "main",
         "documentation": {}
     },
@@ -216,7 +181,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "BOT_NAME = os.environ[\"BOT_NAME\"]\nclass RequestModal(discord.ui.Modal, title=\"Make a request\"):\n    request = discord.ui.TextInput(\n        style=discord.TextStyle.long,\n        label=\"Message\",\n        required=True,\n        max_length=500,\n        placeholder=\"I'd like to learn more about ...\",\n    )\n    async def on_submit(self, interaction: discord.Interaction):",
+        "peekOfCode": "BOT_NAME = os.getenv(\"BOT_NAME\")\nDISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "DISCORD_TOKEN",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "DISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"",
         "detail": "main",
         "documentation": {}
     },
@@ -225,7 +199,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    change_bot_status.start(bot)\n    try:\n        synced_commands = await bot.tree.sync()\n        logger.info(f\"Synced {len(synced_commands)}\")\n    except Exception as e:",
+        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")",
         "detail": "main",
         "documentation": {}
     },
@@ -234,7 +208,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    change_bot_status.start(bot)\n    try:\n        synced_commands = await bot.tree.sync()\n        logger.info(f\"Synced {len(synced_commands)}\")\n    except Exception as e:\n        logger.error(\"errors syncing commands\", e)",
+        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field",
         "detail": "main",
         "documentation": {}
     },
@@ -243,26 +217,8 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    change_bot_status.start(bot)\n    try:\n        synced_commands = await bot.tree.sync()\n        logger.info(f\"Synced {len(synced_commands)}\")\n    except Exception as e:\n        logger.error(\"errors syncing commands\", e)\n@bot.tree.command()",
+        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field\n        self.request = discord.ui.TextInput(",
         "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "decorator",
-        "kind": 2,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "def decorator(func):\n    count = 0\n    print(f\"outside begin: {count}\")\n    def wrapper():\n        nonlocal count\n        func()\n        print(f\"inside: {count}\")\n        count += 1\n    count += 5\n    print(f\"outside end: {count}\")",
-        "detail": "test",
-        "documentation": {}
-    },
-    {
-        "label": "easy_say_whee",
-        "kind": 2,
-        "importPath": "test",
-        "description": "test",
-        "peekOfCode": "def easy_say_whee():\n    pass\neasy_say_whee()\neasy_say_whee()\neasy_say_whee()\neasy_say_whee()",
-        "detail": "test",
         "documentation": {}
     }
 ]
