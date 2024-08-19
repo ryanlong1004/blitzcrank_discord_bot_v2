@@ -4,15 +4,20 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from loguru import logger
+
 from modals.request import RequestModal
 from tasks.status import change_bot_status
 
-# Load environment variables from .env file
+# Load environment variables from the .env file
 load_dotenv()
 
 # Constants
-BOT_NAME = os.getenv("BOT_NAME")
+BOT_NAME = os.getenv("BOT_NAME", "GenericBot")
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+
+# Ensure the Discord token is set
+if not DISCORD_TOKEN:
+    raise ValueError("DISCORD_TOKEN environment variable not set.")
 
 # Discord bot intents and configuration
 intents = discord.Intents.all()
@@ -23,22 +28,24 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     """
-    Called when the bot is ready and has connected to Discord.
+    This event is called when the bot is ready and connected to Discord.
+    It also starts the bot's status update task and syncs the bot's slash commands.
     """
     change_bot_status.start(bot)  # Start the bot's status update task
 
-    # Sync the bot's slash commands
     try:
-        synced_commands = await bot.tree.sync()
-        logger.info(f"Synced {len(synced_commands)} commands.")
+        synced_commands = await bot.tree.sync()  # Sync the bot's slash commands
+        logger.info(f"Successfully synced {len(synced_commands)} commands.")
     except Exception as e:
-        logger.error("Error syncing commands: ", e)
+        logger.error("Failed to sync commands:", e)
 
 
 @bot.tree.command()
 async def request(interaction: discord.Interaction):
     """
-    Slash command to initiate the request modal.
+    A slash command that triggers the request modal, allowing users to submit requests.
+
+    :param interaction: The interaction object representing the command invocation.
     """
     await interaction.response.send_modal(RequestModal())
 
@@ -46,19 +53,26 @@ async def request(interaction: discord.Interaction):
 async def load_extensions():
     """
     Loads all cog extensions from the cogs directory.
+    Each cog is a Python file that contains additional bot functionality.
     """
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
-            await bot.load_extension(f"cogs.{filename[:-3]}")
+            cog_name = f"cogs.{filename[:-3]}"
+            try:
+                await bot.load_extension(cog_name)
+                logger.info(f"Loaded extension: {cog_name}")
+            except Exception as e:
+                logger.error(f"Failed to load extension {cog_name}: {e}")
 
 
 async def main():
     """
-    Main entry point for running the bot.
+    The main entry point for running the bot.
+    It loads extensions and starts the bot with the provided token.
     """
     async with bot:
-        await load_extensions()
-        await bot.start(str(DISCORD_TOKEN))
+        await load_extensions()  # Load all extensions (cogs)
+        await bot.start(str(DISCORD_TOKEN))  # Start the bot
 
 
 if __name__ == "__main__":

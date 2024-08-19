@@ -197,7 +197,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "BOT_NAME = os.getenv(\"BOT_NAME\")\nDISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.",
+        "peekOfCode": "BOT_NAME = os.getenv(\"BOT_NAME\", \"GenericBot\")\nDISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Ensure the Discord token is set\nif not DISCORD_TOKEN:\n    raise ValueError(\"DISCORD_TOKEN environment variable not set.\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event",
         "detail": "main",
         "documentation": {}
     },
@@ -206,7 +206,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"",
+        "peekOfCode": "DISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Ensure the Discord token is set\nif not DISCORD_TOKEN:\n    raise ValueError(\"DISCORD_TOKEN environment variable not set.\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():",
         "detail": "main",
         "documentation": {}
     },
@@ -215,7 +215,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    # Sync the bot's slash commands",
+        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    This event is called when the bot is ready and connected to Discord.\n    It also starts the bot's status update task and syncs the bot's slash commands.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task",
         "detail": "main",
         "documentation": {}
     },
@@ -224,7 +224,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    # Sync the bot's slash commands\n    try:",
+        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    This event is called when the bot is ready and connected to Discord.\n    It also starts the bot's status update task and syncs the bot's slash commands.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    try:",
         "detail": "main",
         "documentation": {}
     },
@@ -233,7 +233,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    # Sync the bot's slash commands\n    try:\n        synced_commands = await bot.tree.sync()",
+        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    This event is called when the bot is ready and connected to Discord.\n    It also starts the bot's status update task and syncs the bot's slash commands.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    try:\n        synced_commands = await bot.tree.sync()  # Sync the bot's slash commands",
         "detail": "main",
         "documentation": {}
     }
