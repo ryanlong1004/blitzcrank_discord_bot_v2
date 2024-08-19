@@ -4,14 +4,17 @@ from loguru import logger
 
 class RequestModal(discord.ui.Modal):
     """
-    A modal for users to submit requests. This will send a message to a designated channel
-    for moderators to review.
+    A modal for users to submit requests. Upon submission, the request is sent
+    to a designated channel for moderators to review.
     """
 
     def __init__(self):
+        """
+        Initializes the RequestModal with a single text input field for the request.
+        """
         super().__init__(title="Make a request")
 
-        # Request input field
+        # Create a text input field for the request message
         self.request = discord.ui.TextInput(
             style=discord.TextStyle.long,
             label="Message",
@@ -23,22 +26,25 @@ class RequestModal(discord.ui.Modal):
 
     async def on_submit(self, interaction: discord.Interaction):
         """
-        Handles submission of the request modal.
+        Handles the submission of the request modal. Sends a confirmation message
+        to the user and forwards the request to a moderator-only channel.
+
+        :param interaction: The interaction object representing the user's interaction with the modal.
         """
+        # Send a confirmation message to the user
         await interaction.response.send_message(
             "Thanks! We received your request.", ephemeral=True
         )
 
-        # Ensure the interaction has a guild context
+        # Ensure the interaction is within a guild context
         if interaction.guild is None:
             logger.warning("Interaction occurred outside of a guild context.")
             return
 
-        # Find the designated channel for moderator review
+        # Find the channel named 'moderator-only' in the guild
         channel = discord.utils.get(interaction.guild.channels, name="moderator-only")
-        if (
-            isinstance(channel, (discord.ForumChannel, discord.CategoryChannel))
-            or channel is None
+        if channel is None or isinstance(
+            channel, (discord.ForumChannel, discord.CategoryChannel)
         ):
             logger.error("Channel 'moderator-only' not found or is of an invalid type.")
             return

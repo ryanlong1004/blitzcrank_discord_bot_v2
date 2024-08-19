@@ -152,7 +152,7 @@
         "kind": 6,
         "importPath": "modals.request",
         "description": "modals.request",
-        "peekOfCode": "class RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field\n        self.request = discord.ui.TextInput(\n            style=discord.TextStyle.long,",
+        "peekOfCode": "class RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. Upon submission, the request is sent\n    to a designated channel for moderators to review.\n    \"\"\"\n    def __init__(self):\n        \"\"\"\n        Initializes the RequestModal with a single text input field for the request.\n        \"\"\"\n        super().__init__(title=\"Make a request\")",
         "detail": "modals.request",
         "documentation": {}
     },
