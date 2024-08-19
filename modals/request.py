@@ -49,5 +49,5 @@ class RequestModal(discord.ui.Modal):
             logger.error("Channel 'moderator-only' not found or is of an invalid type.")
             return
 
-        # Send the user's request to the moderator-only channel
+        # Send the user's request to the moderator-only channe
         await channel.send(f"User Request: \n\n{self.request.value}")
