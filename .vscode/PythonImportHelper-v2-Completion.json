@@ -57,6 +57,14 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "importPath": "loguru",
+        "description": "loguru",
+        "isExtraImport": true,
+        "detail": "loguru",
+        "documentation": {}
+    },
+    {
         "label": "Context",
         "importPath": "discord.ext.commands.context",
         "description": "discord.ext.commands.context",
@@ -115,6 +123,14 @@
         "documentation": {}
     },
     {
+        "label": "RequestModal",
+        "importPath": "modals.request",
+        "description": "modals.request",
+        "isExtraImport": true,
+        "detail": "modals.request",
+        "documentation": {}
+    },
+    {
         "label": "change_bot_status",
         "importPath": "tasks.status",
         "description": "tasks.status",
@@ -129,6 +145,15 @@
         "description": "cogs.tmate",
         "peekOfCode": "class TMate(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    @property\n    def uri(self):\n        result = \"\"\n        with open(\"./uri\", \"r\", encoding=\"utf-8\") as _file:\n            result = _file.read()\n        return result\n    def get_authorized_users(self):",
         "detail": "cogs.tmate",
+        "documentation": {}
+    },
+    {
+        "label": "RequestModal",
+        "kind": 6,
+        "importPath": "modals.request",
+        "description": "modals.request",
+        "peekOfCode": "class RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field\n        self.request = discord.ui.TextInput(\n            style=discord.TextStyle.long,",
+        "detail": "modals.request",
         "documentation": {}
     },
     {
@@ -168,20 +193,11 @@
         "documentation": {}
     },
     {
-        "label": "RequestModal",
-        "kind": 6,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "class RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field\n        self.request = discord.ui.TextInput(\n            style=discord.TextStyle.long,",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
         "label": "BOT_NAME",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "BOT_NAME = os.getenv(\"BOT_NAME\")\nDISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.",
+        "peekOfCode": "BOT_NAME = os.getenv(\"BOT_NAME\")\nDISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.",
         "detail": "main",
         "documentation": {}
     },
@@ -190,7 +206,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "DISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"",
+        "peekOfCode": "DISCORD_TOKEN = os.getenv(\"DISCORD_TOKEN\")\n# Discord bot intents and configuration\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"",
         "detail": "main",
         "documentation": {}
     },
@@ -199,7 +215,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")",
+        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    # Sync the bot's slash commands",
         "detail": "main",
         "documentation": {}
     },
@@ -208,7 +224,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field",
+        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    # Sync the bot's slash commands\n    try:",
         "detail": "main",
         "documentation": {}
     },
@@ -217,7 +233,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\nclass RequestModal(discord.ui.Modal):\n    \"\"\"\n    A modal for users to submit requests. This will send a message to a designated channel\n    for moderators to review.\n    \"\"\"\n    def __init__(self):\n        super().__init__(title=\"Make a request\")\n        # Request input field\n        self.request = discord.ui.TextInput(",
+        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    \"\"\"\n    Called when the bot is ready and has connected to Discord.\n    \"\"\"\n    change_bot_status.start(bot)  # Start the bot's status update task\n    # Sync the bot's slash commands\n    try:\n        synced_commands = await bot.tree.sync()",
         "detail": "main",
         "documentation": {}
     }
