@@ -90,6 +90,14 @@
         "documentation": {}
     },
     {
+        "label": "app_commands",
+        "importPath": "discord",
+        "description": "discord",
+        "isExtraImport": true,
+        "detail": "discord",
+        "documentation": {}
+    },
+    {
         "label": "cycle",
         "importPath": "itertools",
         "description": "itertools",
@@ -132,6 +140,33 @@
         "documentation": {}
     },
     {
+        "label": "intents",
+        "kind": 5,
+        "importPath": "slash_commands.test",
+        "description": "slash_commands.test",
+        "peekOfCode": "intents = discord.Intents.all()\nclient = discord.Client(intents=intents)\ntree = app_commands.CommandTree(client)\n@client.event\nasync def on_ready():\n    await tree.sync(guild=discord.Object(id=611027490848374811))\n    # print \"ready\" in the console when the bot is ready to work\n    print(\"ready\")\n# Add the guild ids in which the slash command will appear.\n# If it should be in all, remove the argument, but note that",
+        "detail": "slash_commands.test",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "slash_commands.test",
+        "description": "slash_commands.test",
+        "peekOfCode": "client = discord.Client(intents=intents)\ntree = app_commands.CommandTree(client)\n@client.event\nasync def on_ready():\n    await tree.sync(guild=discord.Object(id=611027490848374811))\n    # print \"ready\" in the console when the bot is ready to work\n    print(\"ready\")\n# Add the guild ids in which the slash command will appear.\n# If it should be in all, remove the argument, but note that\n# it will take some time (up to an hour) to register the",
+        "detail": "slash_commands.test",
+        "documentation": {}
+    },
+    {
+        "label": "tree",
+        "kind": 5,
+        "importPath": "slash_commands.test",
+        "description": "slash_commands.test",
+        "peekOfCode": "tree = app_commands.CommandTree(client)\n@client.event\nasync def on_ready():\n    await tree.sync(guild=discord.Object(id=611027490848374811))\n    # print \"ready\" in the console when the bot is ready to work\n    print(\"ready\")\n# Add the guild ids in which the slash command will appear.\n# If it should be in all, remove the argument, but note that\n# it will take some time (up to an hour) to register the\n# command if it's for all guilds.",
+        "detail": "slash_commands.test",
+        "documentation": {}
+    },
+    {
         "label": "BOT_STATUSES",
         "kind": 5,
         "importPath": "tasks.status",
@@ -168,11 +203,11 @@
         "documentation": {}
     },
     {
-        "label": "get_guild_count",
-        "kind": 2,
+        "label": "RequestModal",
+        "kind": 6,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")\n        # INCREMENTS THE GUILD COUNTER.\n        guild_count = guild_count + 1\n    logger.info(f\"{guild_count} total guilds\")",
+        "peekOfCode": "class RequestModal(discord.ui.Modal, title=\"Make a request\"):\n    request = discord.ui.TextInput(\n        style=discord.TextStyle.long,\n        label=\"Message\",\n        required=True,\n        max_length=500,\n        placeholder=\"I'd like to learn more about ...\",\n    )\n    async def on_submit(self, interaction: discord.Interaction):\n        await interaction.response.send_message(",
         "detail": "main",
         "documentation": {}
     },
@@ -181,7 +216,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "BOT_NAME = \"Blitzcrank\"\nintents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.",
+        "peekOfCode": "BOT_NAME = os.environ[\"BOT_NAME\"]\nclass RequestModal(discord.ui.Modal, title=\"Make a request\"):\n    request = discord.ui.TextInput(\n        style=discord.TextStyle.long,\n        label=\"Message\",\n        required=True,\n        max_length=500,\n        placeholder=\"I'd like to learn more about ...\",\n    )\n    async def on_submit(self, interaction: discord.Interaction):",
         "detail": "main",
         "documentation": {}
     },
@@ -190,7 +225,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")",
+        "peekOfCode": "intents = discord.Intents.all()\nintents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    change_bot_status.start(bot)\n    try:\n        synced_commands = await bot.tree.sync()\n        logger.info(f\"Synced {len(synced_commands)}\")\n    except Exception as e:",
         "detail": "main",
         "documentation": {}
     },
@@ -199,7 +234,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")\n        # INCREMENTS THE GUILD COUNTER.",
+        "peekOfCode": "intents.message_content = True\nbot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    change_bot_status.start(bot)\n    try:\n        synced_commands = await bot.tree.sync()\n        logger.info(f\"Synced {len(synced_commands)}\")\n    except Exception as e:\n        logger.error(\"errors syncing commands\", e)",
         "detail": "main",
         "documentation": {}
     },
@@ -208,8 +243,26 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\ndef get_guild_count():\n    # CREATES A COUNTER TO KEEP TRACK OF HOW MANY GUILDS / SERVERS THE BOT IS CONNECTED TO.\n    guild_count = 0\n    # LOOPS THROUGH ALL THE GUILD / SERVERS THAT THE BOT IS ASSOCIATED WITH.\n    for guild in bot.guilds:\n        # PRINT THE SERVER'S ID AND NAME.\n        logger.info(f\"- {guild.id} (name: {guild.name})\")\n        # INCREMENTS THE GUILD COUNTER.\n        guild_count = guild_count + 1",
+        "peekOfCode": "bot = commands.Bot(command_prefix=\"!\", intents=intents)\n@bot.event\nasync def on_ready():\n    change_bot_status.start(bot)\n    try:\n        synced_commands = await bot.tree.sync()\n        logger.info(f\"Synced {len(synced_commands)}\")\n    except Exception as e:\n        logger.error(\"errors syncing commands\", e)\n@bot.tree.command()",
         "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "decorator",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def decorator(func):\n    count = 0\n    print(f\"outside begin: {count}\")\n    def wrapper():\n        nonlocal count\n        func()\n        print(f\"inside: {count}\")\n        count += 1\n    count += 5\n    print(f\"outside end: {count}\")",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "easy_say_whee",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def easy_say_whee():\n    pass\neasy_say_whee()\neasy_say_whee()\neasy_say_whee()\neasy_say_whee()",
+        "detail": "test",
         "documentation": {}
     }
 ]
