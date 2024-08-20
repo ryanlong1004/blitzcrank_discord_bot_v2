@@ -1,6 +1,9 @@
 # How to create a bot with an access token for discord
 
-1. Create an account
+## The point of this guide is to create a test server to use the bot.
+
+1. Create an account for discord (You should already have this)
+
 2. Acesss discord.com/developers
 
 If you are not already in "Applications", select it from the left sidebar.
@@ -13,13 +16,7 @@ This will show a list of bots you currently own.
 
 Scroll down a bit further below Priviligues Gateway Intents:
 
-Enable: 
-
-Presence Intent
-
-Server Members Intent
-
-Message Content Intent
+Enable the following intents: Presence Intent, Server Members Intent and Message Content Intent
 
 Click on "Reset Token" and get a new token.
 
