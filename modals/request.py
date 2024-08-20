@@ -51,4 +51,4 @@ class RequestModal(discord.ui.Modal):
             return
 
         # Send the user's request to the moderator-only channel test
-        await channel.send(f"User Request: \n\n{self.request.value}")
+        await channel.send(f"User Requesterssssss: \n\n{self.request.value}")
