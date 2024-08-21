@@ -4,13 +4,12 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from loguru import logger
-
 from modals.request import RequestModal
 from modals.award import AwardModal
 from tasks.status import change_bot_status
 
-# Load environment variables from the .env file
-load_dotenv()
+# Load environment variables from the .env file, force overwriting.
+load_dotenv(override=True)
 
 # Constants
 BOT_NAME = os.getenv("BOT_NAME", "GenericBot")
