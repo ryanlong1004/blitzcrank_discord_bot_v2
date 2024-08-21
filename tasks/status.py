@@ -28,7 +28,6 @@ BOT_STATUSES = cycle(
     ]
 )
 
-
 @tasks.loop(seconds=300)
 async def change_bot_status(bot):
     await bot.change_presence(activity=discord.CustomActivity(next(BOT_STATUSES)))
