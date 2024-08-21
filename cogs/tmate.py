@@ -1,3 +1,4 @@
+import datetime
 import os
 from typing import Any
 from discord.ext import commands
@@ -35,8 +36,8 @@ class TMate(commands.Cog):
         msg = Embed(
             title="Lab Link URL",
             description=f"Click the link to jump to the lab",
-            colour=0x992D22,
-            image=set_image(, https://i.imgur.com/3XBoOz4.jpeg),
+            colour="0x992D22",
+            image=("https://i.imgur.com/3XBoOz4.jpeg"),
             date=datetime.datetime,
         )
         msg.add_field(name="TMate URI", value=f"https://{self.uri}")
