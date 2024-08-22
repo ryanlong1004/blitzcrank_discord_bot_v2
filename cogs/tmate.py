@@ -6,6 +6,7 @@ from loguru import logger
 from discord.ext.commands.context import Context
 from discord.ext.commands.bot import Bot
 from discord import Embed
+import discord
 
 
 class TMate(commands.Cog):
@@ -36,9 +37,8 @@ class TMate(commands.Cog):
         msg = Embed(
             title="Lab Link URL",
             description=f"Click the link to jump to the lab",
-            colour="0x992D22",
-            image=("https://i.imgur.com/3XBoOz4.jpeg"),
-            date=datetime.datetime,
+            colour=discord.colour.parse_hex_number("992d22"),
+            timestamp=datetime.datetime.now(),
         )
         msg.add_field(name="TMate URI", value=f"https://{self.uri}")
         msg.set_thumbnail(url=os.environ["TMATE_THUMB_URL"])
@@ -57,6 +57,7 @@ class TMate(commands.Cog):
 
             await ctx.message.author.send(f"lab link changed to : {uri}")
         return
+
 
 async def setup(bot):
     await bot.add_cog(TMate(bot))

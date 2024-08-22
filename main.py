@@ -4,8 +4,10 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from loguru import logger
+
+
+from cogs.award import AwardModal
 from modals.request import RequestModal
-from modals.award import AwardModal
 from tasks.status import change_bot_status
 
 # Load environment variables from the .env file, force overwriting.
@@ -23,6 +25,7 @@ if not DISCORD_TOKEN:
 intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
+
 
 @bot.event
 async def on_ready():
@@ -48,6 +51,7 @@ async def request(interaction: discord.Interaction):
     """
     await interaction.response.send_modal(RequestModal())
 
+
 @bot.tree.command()
 async def award(interaction: discord.Interaction):
     """
@@ -56,6 +60,7 @@ async def award(interaction: discord.Interaction):
     :param interaction: The interaction object representing the command invocation.
     """
     await interaction.response.send_modal(AwardModal())
+
 
 async def load_extensions():
     """
@@ -76,6 +81,7 @@ async def load_extensions():
 async def on_message(self, message):
     logger.info(f"Incoming message: {message.content}")
 
+
 async def main():
     """
     The main entry point for running the bot.
@@ -84,6 +90,7 @@ async def main():
     async with bot:
         await load_extensions()  # Load all extensions (cogs)
         await bot.start(str(DISCORD_TOKEN))  # Start the bot
+
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -1,11 +1,10 @@
 [
     {
-        "label": "os",
-        "kind": 6,
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -14,6 +13,14 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "commands",
+        "importPath": "discord.ext",
+        "description": "discord.ext",
+        "isExtraImport": true,
+        "detail": "discord.ext",
         "documentation": {}
     },
     {
@@ -65,11 +72,35 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "importPath": "loguru",
+        "description": "loguru",
+        "isExtraImport": true,
+        "detail": "loguru",
+        "documentation": {}
+    },
+    {
         "label": "Context",
         "importPath": "discord.ext.commands.context",
         "description": "discord.ext.commands.context",
         "isExtraImport": true,
         "detail": "discord.ext.commands.context",
+        "documentation": {}
+    },
+    {
+        "label": "Context",
+        "importPath": "discord.ext.commands.context",
+        "description": "discord.ext.commands.context",
+        "isExtraImport": true,
+        "detail": "discord.ext.commands.context",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "discord.ext.commands.bot",
+        "description": "discord.ext.commands.bot",
+        "isExtraImport": true,
+        "detail": "discord.ext.commands.bot",
         "documentation": {}
     },
     {
@@ -98,6 +129,40 @@
         "documentation": {}
     },
     {
+        "label": "Member",
+        "importPath": "discord",
+        "description": "discord",
+        "isExtraImport": true,
+        "detail": "discord",
+        "documentation": {}
+    },
+    {
+        "label": "Embed",
+        "importPath": "discord",
+        "description": "discord",
+        "isExtraImport": true,
+        "detail": "discord",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "cycle",
         "importPath": "itertools",
         "description": "itertools",
@@ -123,6 +188,14 @@
         "documentation": {}
     },
     {
+        "label": "AwardModal",
+        "importPath": "cogs.award",
+        "description": "cogs.award",
+        "isExtraImport": true,
+        "detail": "cogs.award",
+        "documentation": {}
+    },
+    {
         "label": "RequestModal",
         "importPath": "modals.request",
         "description": "modals.request",
@@ -136,6 +209,15 @@
         "description": "tasks.status",
         "isExtraImport": true,
         "detail": "tasks.status",
+        "documentation": {}
+    },
+    {
+        "label": "AwardModal",
+        "kind": 6,
+        "importPath": "cogs.award",
+        "description": "cogs.award",
+        "peekOfCode": "class AwardModal(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    def get_authorized_users(self):\n        # List of users by id that are authorized to run the command.\n        # 142508669999775754 = 創意\n        # 611026501671976975 = het_tanis\n        return [\"142508669999775754\", \"611026501671976975\"]\n    def is_authorized(self, ctx: Context):\n        return str(ctx.message.author.id) in self.get_authorized_users()",
+        "detail": "cogs.award",
         "documentation": {}
     },
     {
