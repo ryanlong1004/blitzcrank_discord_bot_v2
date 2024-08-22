@@ -4,12 +4,12 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from loguru import logger
-
 from modals.request import RequestModal
+from modals.award import AwardModal
 from tasks.status import change_bot_status
 
-# Load environment variables from the .env file
-load_dotenv()
+# Load environment variables from the .env file, force overwriting.
+load_dotenv(override=True)
 
 # Constants
 BOT_NAME = os.getenv("BOT_NAME", "GenericBot")
@@ -48,6 +48,14 @@ async def request(interaction: discord.Interaction):
     """
     await interaction.response.send_modal(RequestModal())
 
+@bot.tree.command()
+async def award(interaction: discord.Interaction):
+    """
+    Award a user you deem worthy!
+
+    :param interaction: The interaction object representing the command invocation.
+    """
+    await interaction.response.send_modal(AwardModal())
 
 async def load_extensions():
     """
@@ -64,6 +72,10 @@ async def load_extensions():
                 logger.error(f"Failed to load extension {cog_name}: {e}")
 
 
+@commands.Cog.listener()
+async def on_message(self, message):
+    logger.info(f"Incoming message: {message.content}")
+
 async def main():
     """
     The main entry point for running the bot.
@@ -72,7 +84,6 @@ async def main():
     async with bot:
         await load_extensions()  # Load all extensions (cogs)
         await bot.start(str(DISCORD_TOKEN))  # Start the bot
-
 
 if __name__ == "__main__":
     asyncio.run(main())

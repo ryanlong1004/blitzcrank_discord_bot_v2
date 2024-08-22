@@ -57,10 +57,5 @@ class TMate(commands.Cog):
             await ctx.message.author.send(f"lab link changed to : {uri}")
         return
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        logger.info(f"incoming message: {message.content}")
-
-
 async def setup(bot):
     await bot.add_cog(TMate(bot))
