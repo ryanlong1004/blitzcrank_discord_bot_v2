@@ -4,9 +4,6 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from loguru import logger
-
-
-from cogs.award import AwardModal
 from modals.request import RequestModal
 from tasks.status import change_bot_status
 
@@ -50,16 +47,6 @@ async def request(interaction: discord.Interaction):
     :param interaction: The interaction object representing the command invocation.
     """
     await interaction.response.send_modal(RequestModal())
-
-
-@bot.tree.command()
-async def award(interaction: discord.Interaction):
-    """
-    Award a user you deem worthy!
-
-    :param interaction: The interaction object representing the command invocation.
-    """
-    await interaction.response.send_modal(AwardModal())
 
 
 async def load_extensions():
