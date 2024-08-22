@@ -7,7 +7,7 @@ from discord import Embed, Member
 import datetime
 
 
-class AwardModal(commands.Cog):
+class Award(commands.Cog):
 
     def __init__(self, bot: Bot):
         self.bot = bot
@@ -33,6 +33,13 @@ class AwardModal(commands.Cog):
         *,
         description: Optional[str] = None,
     ):
+        """Generate the command to be sent.
+
+        Args:
+            ctx (Context): Discord Context Class
+            member (Optional[Member], optional): Discord Member Class. Defaults to None.
+            description (Optional[str], optional): Description for the award. Defaults to None.
+        """
         # Verify the user is authorized to run the command
         if not self.is_authorized(ctx):
             await ctx.send("You are simply not cool enough to award someone.. yet.")
@@ -76,4 +83,4 @@ class AwardModal(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(AwardModal(bot))
+    await bot.add_cog(Award(bot))

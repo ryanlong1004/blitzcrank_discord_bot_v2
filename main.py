@@ -4,9 +4,6 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 from loguru import logger
-
-
-from cogs.award import AwardModal
 from modals.request import RequestModal
 from tasks.status import change_bot_status
 
@@ -25,7 +22,6 @@ if not DISCORD_TOKEN:
 intents = discord.Intents.all()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
-
 
 @bot.event
 async def on_ready():
@@ -50,16 +46,6 @@ async def request(interaction: discord.Interaction):
     :param interaction: The interaction object representing the command invocation.
     """
     await interaction.response.send_modal(RequestModal())
-
-
-@bot.tree.command()
-async def award(interaction: discord.Interaction):
-    """
-    Award a user you deem worthy!
-
-    :param interaction: The interaction object representing the command invocation.
-    """
-    await interaction.response.send_modal(AwardModal())
 
 
 async def load_extensions():
