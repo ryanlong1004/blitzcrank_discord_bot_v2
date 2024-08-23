@@ -32,16 +32,16 @@ class Jacket(commands.Cog):
         jacket_pieces = [
             ((150, 50), ["SAP"]),
             ((300, 50), ["DOP"]),
-            ((70, 150), ["DBS"]),
+            ((70, 150), ["MLS"]),
             ((150, 150), ["ANS", "NETWORKING"]),
             ((300, 150), ["SCS"]),
-            ((380, 150), ["DAS"]),
+            ((380, 150), ["AIP"]),
             ((150, 250), ["DVA"]),
             ((300, 250), ["SOA"]),
-            ((30, 350), ["MLS"]),
+            ((30, 350), ["DEA"]),
             ((150, 350), ["CLF", "CCP"]),
             ((300, 350), ["SAA"]),
-            ((415, 350), ["PAS"]),
+            ((415, 350), ["MLA"]),
         ]
 
         certs = [cert.upper() for cert in certs]
@@ -82,11 +82,16 @@ class Jacket(commands.Cog):
     @commands.command()
     async def jacket(self, ctx: Context, *args):
         if len(args) < 1:
-            await ctx.send("Example: !jacket SAP DOP DBS ANS NETWORKING SCS DAS DVA SOA MLS CLF CCP SAA PAS ")
+            await ctx.send("Full Jacket: !jacket SAP DOP MLS ANS SCS AIP DVA SOA DEA CLF SAA MLA ")
             return
 
         if args[0].lower() == "help":
-            await ctx.send("Example: !jacket SAP DOP DBS ANS NETWORKING SCS DAS DVA SOA MLS CLF CCP SAA PAS ")
+            await ctx.send(
+            """```yaml
+SAP: - (Solutions Architect Pro) DOP: - (Devops Engineer Pro) MLS: - (Machine Learning Speciality) ANS/NETWORKING: - (Advanced Networking Speciality) SCS: -  (Security Specialist) AIP: - (Ai Practitioner)  DVA: - (Developer Associate) SOA: - (SysOps Administrator) DEA: - (Data Engineer Associate) CLF/CCP: - (Cloud Practitioner) SAA: - (Solutions Architect Associate) MLA: - (Machine Learning Associate)
+```
+            """.strip()
+        )
             return
 
         image_bytes = self.create_jacket(args)
