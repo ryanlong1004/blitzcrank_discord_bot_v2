@@ -82,6 +82,7 @@ class Jacket(commands.Cog):
     @commands.command()
     async def jacket(self, ctx: Context, *args):
         if len(args) < 1:
+            await ctx.send("Example: !jacket SAP DOP DBS ANS NETWORKING SCS DAS DVA SOA MLS CLF CCP SAA PAS ")
             return
 
         if args[0].lower() == "help":
@@ -90,7 +91,7 @@ class Jacket(commands.Cog):
 
         image_bytes = self.create_jacket(args)
         image_file_send = discord.File(fp=image_bytes, filename="aws-jacket.webp")
-        await ctx.send(":golden_jacket: One AWS Golden Jacket coming up! :golden_jacket:", file=image_file_send)
+        await ctx.send("<:golden_jacket:1014289794630697023>  One AWS Golden Jacket coming up! <:golden_jacket:1014289794630697023> ", file=image_file_send)
 
 async def setup(bot):
     await bot.add_cog(Jacket(bot))
