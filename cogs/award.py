@@ -76,7 +76,7 @@ class Award(commands.Cog):
             timestamp=datetime.datetime.now(),
         )
         # msg.set_thumbnail(url="http://0x0.st/XysE.png")
-        msg.set_image(url="http://0x0.st/XysE.png")  # Ai maybe?
+        msg.set_image(url="http://0x0.st/XyQK.png")  # Ai maybe?
         logger.debug(f"Embed Message: {msg.to_dict()}")
         logger.info(f"Sending award to {member.display_name}...")
         await ctx.send(embed=msg)
