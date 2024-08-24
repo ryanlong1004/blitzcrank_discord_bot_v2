@@ -1,4 +1,6 @@
+import datetime
 import discord
+from discord import Embed
 from loguru import logger
 
 
@@ -51,4 +53,10 @@ class RequestModal(discord.ui.Modal):
             return
 
         # Send the user's request to the moderator-only channel test
-        await channel.send(f"User Requesterssssss: \n\n{self.request.value}")
+        await channel.send(f"User Requesters: \n\n{self.request.value}")
+        msg = Embed(
+            title="Request",
+            description=f"!User request: {self.request}",
+            color=discord.color.parse_hex_number("ff6700"),
+            timestamp=datetime.datetime.now(),
+        )
