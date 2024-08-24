@@ -37,7 +37,7 @@ class TMate(commands.Cog):
         msg = Embed(
             title="Lab Link URL",
             description=f"Click the link to jump to the lab",
-            colour=discord.colour.parse_hex_number("992d22"),
+            color=discord.color.parse_hex_number("992d22"),
             timestamp=datetime.datetime.now(),
         )
         msg.add_field(name="TMate URI", value=f"https://{self.uri}")
