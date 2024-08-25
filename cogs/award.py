@@ -67,7 +67,7 @@ class Award(commands.Cog):
             await ctx.send(embed=msg)
             return
 
-        # Message to send awarded user
+        # Message to send awarded use
         await ctx.send(f"### 🎉{member.mention} has been given an award! 🎉".upper())
         msg = Embed(
             title=f"The Kings To you Award:\n{member.display_name.upper()}",

@@ -32,6 +32,14 @@
         "documentation": {}
     },
     {
+        "label": "commands",
+        "importPath": "discord.ext",
+        "description": "discord.ext",
+        "isExtraImport": true,
+        "detail": "discord.ext",
+        "documentation": {}
+    },
+    {
         "label": "tasks",
         "importPath": "discord.ext",
         "description": "discord.ext",
@@ -80,6 +88,14 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "importPath": "loguru",
+        "description": "loguru",
+        "isExtraImport": true,
+        "detail": "loguru",
+        "documentation": {}
+    },
+    {
         "label": "Context",
         "importPath": "discord.ext.commands.context",
         "description": "discord.ext.commands.context",
@@ -93,6 +109,22 @@
         "description": "discord.ext.commands.context",
         "isExtraImport": true,
         "detail": "discord.ext.commands.context",
+        "documentation": {}
+    },
+    {
+        "label": "Context",
+        "importPath": "discord.ext.commands.context",
+        "description": "discord.ext.commands.context",
+        "isExtraImport": true,
+        "detail": "discord.ext.commands.context",
+        "documentation": {}
+    },
+    {
+        "label": "Bot",
+        "importPath": "discord.ext.commands.bot",
+        "description": "discord.ext.commands.bot",
+        "isExtraImport": true,
+        "detail": "discord.ext.commands.bot",
         "documentation": {}
     },
     {
@@ -154,6 +186,31 @@
         "documentation": {}
     },
     {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "ImageDraw",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -188,14 +245,6 @@
         "documentation": {}
     },
     {
-        "label": "AwardModal",
-        "importPath": "cogs.award",
-        "description": "cogs.award",
-        "isExtraImport": true,
-        "detail": "cogs.award",
-        "documentation": {}
-    },
-    {
         "label": "RequestModal",
         "importPath": "modals.request",
         "description": "modals.request",
@@ -212,12 +261,21 @@
         "documentation": {}
     },
     {
-        "label": "AwardModal",
+        "label": "Award",
         "kind": 6,
         "importPath": "cogs.award",
         "description": "cogs.award",
-        "peekOfCode": "class AwardModal(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    def get_authorized_users(self):\n        # List of users by id that are authorized to run the command.\n        # 142508669999775754 = 創意\n        # 611026501671976975 = het_tanis\n        return [\"142508669999775754\", \"611026501671976975\"]\n    def is_authorized(self, ctx: Context):\n        return str(ctx.message.author.id) in self.get_authorized_users()",
+        "peekOfCode": "class Award(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    def get_authorized_users(self):\n        # List of users by id that are authorized to run the command.\n        # 142508669999775754 = 創意\n        # 611026501671976975 = het_tanis\n        return [\"142508669999775754\", \"611026501671976975\"]\n    def is_authorized(self, ctx: Context):\n        return str(ctx.message.author.id) in self.get_authorized_users()",
         "detail": "cogs.award",
+        "documentation": {}
+    },
+    {
+        "label": "Jacket",
+        "kind": 6,
+        "importPath": "cogs.jacket",
+        "description": "cogs.jacket",
+        "peekOfCode": "class Jacket(commands.Cog):\n    def __init__(self, bot: Bot):\n        self.bot = bot\n    @commands.Cog.listener()\n    async def on_ready(self):\n        logger.info(f\"{__name__} is online\")\n    def jacket_files(self):\n        path = os.path.realpath(os.path.dirname(__file__)) + os.path.sep\n        jacket_image = path + \"jacket.png\"\n        jacket_text = path + \"jacket_text.png\"",
+        "detail": "cogs.jacket",
         "documentation": {}
     },
     {
