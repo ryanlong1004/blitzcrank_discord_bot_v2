@@ -33,7 +33,6 @@ class TMate(commands.Cog):
 
     @commands.command()
     async def lab_link(self, ctx: Context):
-        name = "ryan"
         logger.info(f"{self.uri}")
         msg = Embed(
             title="Lab Link URL",
@@ -65,4 +64,3 @@ async def setup(bot):
     Sets up the bot.
     """
     await bot.add_cog(TMate(bot))
-
