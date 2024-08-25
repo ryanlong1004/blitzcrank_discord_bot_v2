@@ -287,6 +287,15 @@
         "documentation": {}
     },
     {
+        "label": "test_nothing_for_demo_only",
+        "kind": 2,
+        "importPath": "cogs.test_tmate",
+        "description": "cogs.test_tmate",
+        "peekOfCode": "def test_nothing_for_demo_only():\n    assert True",
+        "detail": "cogs.test_tmate",
+        "documentation": {}
+    },
+    {
         "label": "TMate",
         "kind": 6,
         "importPath": "cogs.tmate",
