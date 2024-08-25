@@ -101,7 +101,7 @@ SAP: - (Solutions Architect Pro) DOP: - (Devops Engineer Pro) MLS: - (Machine Le
             )
             return
 
-        image_bytes = self.create_jacket(args)
+        image_bytes = self.create_jacket(args)  # type: ignore
         image_file_send = discord.File(fp=image_bytes, filename="aws-jacket.webp")
         await ctx.send(
             "<:golden_jacket:1014289794630697023>  One AWS Golden Jacket coming up! <:golden_jacket:1014289794630697023> ",

@@ -23,7 +23,6 @@ class RequestModal(discord.ui.Modal):
             required=True,
             max_length=500,
             placeholder="I'd like to learn more about ...",
-            
         )
         self.add_item(self.request)
 
@@ -57,6 +56,6 @@ class RequestModal(discord.ui.Modal):
         msg = Embed(
             title="Request",
             description=f"!User request: {self.request}",
-            color=discord.color.parse_hex_number("ff6700"),
+            color=discord.Colour.from_str("ff6700"),
             timestamp=datetime.datetime.now(),
         )

@@ -33,12 +33,13 @@ class TMate(commands.Cog):
 
     @commands.command()
     async def lab_link(self, ctx: Context):
+        name = "ryan"
         logger.info(f"{self.uri}")
         msg = Embed(
             title="Lab Link URL",
-            description=f"Click the link to jump to the lab",
-            color=discord.color.parse_hex_number("992d22"),
+            description="Click the link to jump to the lab",
             timestamp=datetime.datetime.now(),
+            colour=discord.Colour.from_str("992d22"),
         )
         msg.add_field(name="TMate URI", value=f"https://{self.uri}")
         msg.set_thumbnail(url=os.environ["TMATE_THUMB_URL"])
