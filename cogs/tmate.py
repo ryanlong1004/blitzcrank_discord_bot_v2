@@ -61,4 +61,8 @@ class TMate(commands.Cog):
 
 
 async def setup(bot):
+    """
+    Sets up the bot.
+    """
     await bot.add_cog(TMate(bot))
+
