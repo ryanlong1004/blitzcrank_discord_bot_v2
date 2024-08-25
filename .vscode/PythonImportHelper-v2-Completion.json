@@ -291,7 +291,7 @@
         "kind": 2,
         "importPath": "cogs.test_tmate",
         "description": "cogs.test_tmate",
-        "peekOfCode": "def test_nothing_for_demo_only():\n    assert True",
+        "peekOfCode": "def test_nothing_for_demo_only():\n    \"\"\"add text to trigger push cicd\"\"\"\n    assert True",
         "detail": "cogs.test_tmate",
         "documentation": {}
     },
