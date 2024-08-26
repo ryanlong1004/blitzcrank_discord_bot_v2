@@ -60,7 +60,7 @@ class Award(commands.Cog):
             return
 
         if description is None:
-            description = f"You've earned an awesome award!"
+            description = "You've earned an awesome award!"
 
         # Do not let users award themselves.
         if ctx.message.author.id == member.id:
