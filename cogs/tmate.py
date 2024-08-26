@@ -8,8 +8,8 @@ from discord.ext.commands.bot import Bot
 from discord import Embed, File
 import discord
 
-class TMate(commands.Cog):
 
+class TMate(commands.Cog):
     def __init__(self, bot: Bot):
         self.bot = bot
 
@@ -78,6 +78,7 @@ class TMate(commands.Cog):
 
             await ctx.message.author.send(f"lab link changed to : {uri}")
         return
+
 
 async def setup(bot):
     """
