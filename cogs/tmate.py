@@ -53,7 +53,7 @@ class TMate(commands.Cog):
         msg.add_field(name="TMate URI", value=f"https://{self.uri}")
         # Create a filename attachement for the thumbnail.
         image_thumbnail = File(
-            f"{self.tmate_files()["tmate_thumb"]}", filename="tmate_thumb.jpeg"
+            f"{self.tmate_files()['tmate_thumb']}", filename="tmate_thumb.jpeg"
         )
         msg.set_thumbnail(url=f"attachment://{image_thumbnail.filename}")
         logger.debug(f"{msg.to_dict()}")
