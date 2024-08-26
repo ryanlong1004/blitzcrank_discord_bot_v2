@@ -1,10 +1,11 @@
+import datetime
+import os
 from typing import Optional
 from discord.ext import commands
 from loguru import logger
 from discord.ext.commands.context import Context
 from discord.ext.commands.bot import Bot
-from discord import Embed, Member
-import datetime
+from discord import Embed, Member, File
 
 
 class Award(commands.Cog):
@@ -20,6 +21,13 @@ class Award(commands.Cog):
 
     def is_authorized(self, ctx: Context):
         return str(ctx.message.author.id) in self.get_authorized_users()
+
+    def award_files(self):
+        path = os.path.realpath(os.path.dirname(__file__)) + os.path.sep
+        award = path + "files/360_F_446459957_nIy330lOKvQ5N92WpIn5zPElIikTRB4g-1551506731.jpg"
+        self_award = path + "files/XJGc.jpg"
+
+        return {"award": award, "self_award": self_award}
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -61,10 +69,11 @@ class Award(commands.Cog):
                 color=0x6F4F28,  # https://old.discordjs.dev/#/docs/discord.js/main/typedef/Colors
                 timestamp=datetime.datetime.now(),
             )
-            msg.set_image(url="http://0x0.st/XJGc.jpg")  # Ai maybe?
+            image = File(f'{self.award_files()["self_award"]}', filename="self_award.png")
+            msg.set_image(url=f"attachment://{image.filename}")  # Ai maybe?
             logger.debug(f"Embed Message: {msg.to_dict()}")
             logger.info(f"Sending reward to {member.display_name}...")
-            await ctx.send(embed=msg)
+            await ctx.send(embed=msg, file=image)
             return
 
         # Message to send awarded user
@@ -72,14 +81,15 @@ class Award(commands.Cog):
         msg = Embed(
             title=f"The Kings To you Award:\n{member.display_name.upper()}",
             description=description + " 🏆\n",
-            color=0xFFD700,  # Gold color
+            color=0xFFD700,  # Gold color in hexadecimal
             timestamp=datetime.datetime.now(),
         )
         # msg.set_thumbnail(url="http://0x0.st/XysE.png")
-        msg.set_image(url="http://0x0.st/XyQK.png")  # Ai maybe?
+        image = File(f'{self.award_files()["award"]}', filename="award.png")
+        msg.set_image(url=f"attachment://{image.filename}")  # Ai maybe?
         logger.debug(f"Embed Message: {msg.to_dict()}")
         logger.info(f"Sending award to {member.display_name}...")
-        await ctx.send(embed=msg)
+        await ctx.send(embed=msg, file=image)
 
 
 async def setup(bot):
